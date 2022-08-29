@@ -1,0 +1,24 @@
+.pagination {
+  display: flex;
+}
+
+.pagination--page {
+  padding: 0.25em;
+  margin: 0.25em auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 1.5em;
+  text-align: center;
+}
+
+.pagination--page:hover {
+  background: orangered;
+  color: white;
+}
+
+.pagination--page-selected {
+  font-weight: bold;
+  background: purple;
+  color: white;
+}

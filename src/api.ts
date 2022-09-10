@@ -31,7 +31,7 @@ export const getTop250Movies = (
       setLoadingState("SUCCESS");
       setMovieState(cleanImdbRequest);
     })
-    .catch((err) => {
+    .catch(() => {
       setMovieState([]);
       setLoadingState("ERROR");
     });

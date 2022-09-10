@@ -7,29 +7,9 @@ interface IScoreViewProps {
 }
 const ScoreView: React.FC<IScoreViewProps> = ({ imDbRating }) => {
   const MAX_RATING = 10;
-  const TOTAL_WIDTH = MAX_RATING * 5;
-
-  const fillPercent = imDbRating * 10;
-
   return (
     <div>
-      <div style={{ display: "flex", height: "1em" }}>
-        <div
-          style={{
-            width: `${fillPercent}px`,
-            backgroundColor: "darkgoldenrod",
-          }}
-        />
-        <div
-          style={{
-            width: `${TOTAL_WIDTH - fillPercent * 10}px`,
-            backgroundColor: "gray",
-          }}
-        />
-      </div>
-      <div>
         {imDbRating}/{MAX_RATING}
-      </div>
     </div>
   );
 };

@@ -29,7 +29,7 @@ const Movies: React.FC<{}> = () => {
 
   const sortedMovies = React.useMemo(
     () =>
-      movies.sort(
+      [...movies].sort(
         (a, b) =>
           b[sortBy].toString().localeCompare(a[sortBy].toString()) *
           (sortDecending ? 1 : -1)
@@ -41,7 +41,7 @@ const Movies: React.FC<{}> = () => {
     const startIndex = currentPage * pageSize;
     const endIndex = currentPage * pageSize + pageSize;
     return sortedMovies.slice(startIndex, endIndex);
-  }, [sortedMovies, currentPage, sortDecending, sortBy, movies, pageSize]);
+  }, [currentPage, pageSize, sortedMovies]);
 
   return (
     <>

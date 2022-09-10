@@ -1,12 +1,6 @@
 import React from "react";
 
-interface IProps {
-  children: JSX.Element | JSX.Element[];
-  retryFunction?: () => void;
-  isError?: boolean;
-}
-
-const RetryWrapper = ({ isError = false, children, retryFunction }: IProps) => {
+const RetryWrapper = ({ isError = false, children, retryFunction }) => {
   if (!isError) {
     return <>{children}</>;
   } else {

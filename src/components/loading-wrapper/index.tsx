@@ -1,11 +1,6 @@
 import React from "react";
 
-interface IProps {
-  isLoading: boolean;
-  children: JSX.Element | JSX.Element[];
-}
-
-const LoadingWrapper: React.FC<IProps> = ({ isLoading, children }) => {
+const LoadingWrapper = ({ isLoading, children }) => {
   if (!isLoading) {
     return <>{children}</>;
   } else {

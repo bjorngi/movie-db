@@ -1,15 +1,7 @@
 import React from "react";
 import { onEnterKey } from "../../utils";
 
-interface IPaginationProps {
-  pageSize: number;
-  currentPage: number;
-  numberOfElements: number;
-  setCurrentPage: (newPage: number) => void;
-  setPageSize: (newPageSize: number) => void;
-}
-
-const Pagination: React.FC<IPaginationProps> = ({
+const Pagination = ({
   pageSize,
   currentPage,
   numberOfElements,
@@ -32,7 +24,7 @@ const Pagination: React.FC<IPaginationProps> = ({
     }
   };
 
-  const onSelectPageSize: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+  const onSelectPageSize = (e) => {
     const newValue = e.currentTarget.value as unknown as number;
     setPageSize(newValue);
   };

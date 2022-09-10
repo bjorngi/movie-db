@@ -5,19 +5,17 @@ import MovieListView from "../../components/movie-list-view";
 import Pagination from "../../components/pagination";
 import RetryWrapper from "../../components/retry-wrapper";
 import SortDropdown from "../../components/sort-dropdown";
-import { SortKeys } from "../../components/sort-dropdown/types";
-import { IMovie, IRequestState } from "../../types";
 import "./movies.css";
 
-const Movies: React.FC<{}> = () => {
+const Movies = () => {
   const [pageSize, setPageSize] = React.useState(10);
   const [currentPage, setCurrentPage] = React.useState(0);
-  const [sortBy, setSortBy] = React.useState<SortKeys>("imDbRating");
+  const [sortBy, setSortBy] = React.useState("imDbRating");
   const [sortDecending, setSortDecending] = React.useState(true);
 
-  const [movies, setMovies] = React.useState<IMovie[]>([]);
+  const [movies, setMovies] = React.useState([]);
   const [loadingState, setLoadingState] =
-    React.useState<IRequestState>("SHOULD_UPDATE");
+    React.useState("SHOULD_UPDATE");
 
   React.useEffect(() => {
     if (loadingState === "SHOULD_UPDATE") {

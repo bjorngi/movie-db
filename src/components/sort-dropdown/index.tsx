@@ -1,26 +1,19 @@
 import React from "react";
-import { SortKeys } from "./types";
 
-const sortByKeys: Record<string, SortKeys> = {
+const sortByKeys = {
   RATING: "imDbRating",
   YEAR: "year",
   NAME: "title",
 };
 
-interface ISortDropdownProps {
-  setSort: (newSort: SortKeys) => void;
-  sortDecending: boolean;
-  currentSort: string;
-  setSortDecending: (newSortDirection: boolean) => void;
-}
-const SortDropdown: React.FC<ISortDropdownProps> = ({
+const SortDropdown = ({
   setSort,
   sortDecending,
   currentSort,
   setSortDecending,
 }) => {
-  const onSelect: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
-    const newValue = e.currentTarget.value as SortKeys;
+  const onSelect = (e) => {
+    const newValue = e.currentTarget.value;
     setSort(newValue);
   };
 
@@ -29,7 +22,6 @@ const SortDropdown: React.FC<ISortDropdownProps> = ({
   return (
     <div>
       <label htmlFor="sort">Sort on: </label>
-
       <select name="sort" id="sort" value={currentSort} onChange={onSelect}>
         <option value={sortByKeys.YEAR}>Year</option>
 

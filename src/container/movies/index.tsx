@@ -8,54 +8,32 @@ import SortDropdown from "../../components/sort-dropdown";
 import "./movies.css";
 
 const Movies = () => {
-  const [pageSize, setPageSize] = React.useState(10);
-  const [currentPage, setCurrentPage] = React.useState(0);
-  const [sortBy, setSortBy] = React.useState("imDbRating");
-  const [sortDecending, setSortDecending] = React.useState(true);
-
   const [movies, setMovies] = React.useState([]);
   const [loadingState, setLoadingState] =
     React.useState("SHOULD_UPDATE");
 
   React.useEffect(() => {
     if (loadingState === "SHOULD_UPDATE") {
-      getTop250Movies(setLoadingState, setMovies);
+      getTop250Movies() // begyn med å fikse getTop250Movies()
     }
   }, [loadingState]);
 
   const resetRequest = () => setLoadingState("SHOULD_UPDATE");
-
-  const sortedMovies = React.useMemo(
-    () =>
-      [...movies].sort(
-        (a, b) =>
-          b[sortBy].toString().localeCompare(a[sortBy].toString()) *
-          (sortDecending ? 1 : -1)
-      ),
-    [sortBy, movies, sortDecending]
-  );
-
-  const paginatedMovies = React.useMemo(() => {
-    const startIndex = currentPage * pageSize;
-    const endIndex = currentPage * pageSize + pageSize;
-    return sortedMovies.slice(startIndex, endIndex);
-  }, [currentPage, pageSize, sortedMovies]);
-
   return (
     <>
       <h1>Movies</h1>
       <SortDropdown
-        setSort={setSortBy}
-        currentSort={sortBy}
-        setSortDecending={setSortDecending}
-        sortDecending={sortDecending}
+        setSort={console.log}
+        currentSort={'rating'}
+        setSortDecending={console.log}
+        sortDecending={console.log}
       />
       <Pagination
-        pageSize={pageSize}
-        currentPage={currentPage}
-        numberOfElements={sortedMovies.length}
-        setCurrentPage={setCurrentPage}
-        setPageSize={setPageSize}
+        pageSize={1}
+        currentPage={0}
+        numberOfElements={1}
+        setCurrentPage={console.log}
+        setPageSize={console.log}
       />
 
       <LoadingWrapper isLoading={loadingState === "LOADING"}>
@@ -63,7 +41,7 @@ const Movies = () => {
           isError={loadingState === "ERROR"}
           retryFunction={resetRequest}
         >
-          {paginatedMovies.map((movie) => (
+          {movies.map((movie) => (
             <MovieListView
               key={movie.id}
               title={movie.title}

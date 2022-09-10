@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Movies from "./container/movies";
+import Movies from "./page/movies";
 
 function App() {
   return (
